@@ -1,0 +1,43 @@
+name: ✅ Task / ToDo
+description: مهمة عامة أو عمل إداري ضمن المشروع.
+title: "Task: "
+labels: [task]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: اشرح المهمة بإيجاز
+      placeholder: "المهمة المطلوبة هي ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: أعط تفاصيل إضافية أو خطوات التنفيذ
+      placeholder: |
+        1. قم بـ...
+        2. ثم ...
+        3. تحقق من ...
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: ما أولوية هذه المهمة؟
+      options:
+        - Low
+        - Medium
+        - High
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      description: ضع خطوات فرعية يمكن تتبعها
+      placeholder: |
+        - [ ] خطوة 1
+        - [ ] خطوة 2
+        - [ ] خطوة 3

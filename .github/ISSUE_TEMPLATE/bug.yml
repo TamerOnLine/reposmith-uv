@@ -1,0 +1,48 @@
+name: 🐞 Bug Report
+description: أبلغ عن مشكلة أو خطأ.
+title: "Bug: "
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Affected Version
+      description: اذكر رقم الإصدار المتأثر
+      placeholder: "x.y.z"
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: ما الخطوات التي تؤدي إلى ظهور المشكلة؟
+      placeholder: |
+        1. افتح ...
+        2. نفذ ...
+        3. لاحظ الخطأ
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: ما المتوقع حدوثه؟
+      placeholder: "المفروض أن ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: ما الذي حصل فعلاً؟
+      placeholder: "النتيجة كانت ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Screenshots
+      description: إذا ممكن، أضف سجل أو صورة توضح الخطأ
+      placeholder: "Traceback or Screenshot"

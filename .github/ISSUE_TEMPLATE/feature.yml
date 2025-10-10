@@ -1,0 +1,29 @@
+name: ✨ Feature Request
+description: اقترح ميزة جديدة للمشروع.
+title: "Feature: "
+labels: [feature, enhancement]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: اشرح الميزة المقترحة بشكل مختصر
+      placeholder: "الميزة المقترحة هي ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: لماذا هذه الميزة مهمة؟
+      placeholder: "لأنها تساعد على ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Possible Implementation
+      description: كيف تتخيل تطبيقها؟
+      placeholder: "يمكن تنفيذها عبر ..."
