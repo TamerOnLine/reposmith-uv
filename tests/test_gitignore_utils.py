@@ -3,7 +3,7 @@ import unittest
 import tempfile
 from pathlib import Path
 
-from reposmith.gitignore_utils import create_gitignore, PRESETS
+from reposmith.gitignore_utils import create_gitignore
 
 class TestGitignoreUtils(unittest.TestCase):
     def setUp(self):
