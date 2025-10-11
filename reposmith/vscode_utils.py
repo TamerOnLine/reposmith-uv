@@ -80,9 +80,15 @@ def create_vscode_files(
     Historically accepted:
         create_vscode_files(project_root, venv_path, main_file="main.py", force=False)
     """
-    _ = venv_path  # kept for backward compatibility
-
-    interpreter = get_python_interpreter_path(project_root)
+    # اختر المفسّر: فضّل venv_path إن توفر وكان صالحًا، وإلا fallback
+    if venv_path is not None:
+        if os.name == "nt":
+            candidate = venv_path / "Scripts" / "python.exe"
+        else:
+            candidate = venv_path / "bin" / "python3"
+        interpreter = str(candidate) if candidate.exists() else get_python_interpreter_path(project_root)
+    else:
+        interpreter = get_python_interpreter_path(project_root)
 
     vscode_dir = project_root / ".vscode"
     vscode_dir.mkdir(parents=True, exist_ok=True)
@@ -94,7 +100,7 @@ def create_vscode_files(
     }
     write_file(vscode_dir / "settings.json", json.dumps(settings, indent=2) + "\n", force=force)
 
-    # ✅ launch.json — الآن يكتب اسم الملف فقط (يصلح الاختبار)
+    # launch.json (الاختبار يريد اسم الملف فقط)
     launch = {
         "version": "0.2.0",
         "configurations": [
@@ -110,7 +116,7 @@ def create_vscode_files(
     }
     write_file(vscode_dir / "launch.json", json.dumps(launch, indent=2) + "\n", force=force)
 
-    # workspace
+    # project.code-workspace
     workspace = {
         "folders": [{"path": "."}],
         "settings": {"python.defaultInterpreterPath": interpreter},
