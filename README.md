@@ -90,6 +90,24 @@ python -m unittest discover -s tests -v
 
 ---
 
+## 🧑‍💻 Development with uv (fastest)
+```bash
+# Sync dev dependencies
+uv sync --dev
+
+# Run tests + coverage
+uv run -m pytest -q --cov=. --cov-report=term-missing
+
+# Lint & check code
+uv run ruff check reposmith/ tests/
+
+# Build package
+uv build
+
+```
+
+---
+
 ## 🗺️ Roadmap
 
 
@@ -112,5 +130,6 @@ This project is licensed under the [MIT License](https://github.com/liebemama/Re
 - 💡 **Feature Requests:** [GitHub Issues](https://github.com/liebemama/RepoSmith/issues) (اختر نوع *Feature Request*)  
 - 💖 **Sponsor:** [GitHub Sponsors](https://github.com/sponsors/liebemama)  
 - 📧 **Contact:** (info@tameronline.com)
+
 
 
