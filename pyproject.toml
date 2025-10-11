@@ -10,7 +10,6 @@ readme = "README.md"
 requires-python = ">=3.12"
 authors = [{ name = "TamerOnLine" }]
 keywords = ["bootstrap", "venv", "gitignore", "license", "vscode", "scaffold", "cli"]
-
 license = "MIT"
 license-files = ["LICENSE"]
 
@@ -37,11 +36,11 @@ reposmith = "reposmith.main:main"
 where = ["."]
 include = ["reposmith*"]
 
-# ================================
-# uv configuration (correct)
-# ================================
+# --------------------------
+# uv (legacy config compatible with uv 0.9.2)
+# --------------------------
 [tool.uv]
-# index-url = "https://pypi.org/simple"  # (اختياري)
+# index-url = "https://pypi.org/simple"  # optional mirror
 dev-dependencies = [
   "pytest",
   "pytest-cov",
@@ -51,14 +50,16 @@ dev-dependencies = [
   "twine",
 ]
 
-# ================================
-# Tooling (optional but useful)
-# ================================
+# --------------------------
+# Ruff (modern sections to avoid deprecation warnings)
+# --------------------------
 [tool.ruff]
 line-length = 100
 target-version = "py313"
+
+[tool.ruff.lint]
 select = ["E", "F", "W"]
-ignore = ["E501"]  # ignore long lines in docstrings/links
+ignore = ["E501"]  # ignore long lines in links/docstrings
 
 [tool.pytest.ini_options]
 addopts = "-q"

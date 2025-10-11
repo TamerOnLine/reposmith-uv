@@ -175,7 +175,7 @@ Dev_requirements.txt
 .DS_Store
 Thumbs.db
 
-# Generated env info 
+# Generated env info
 env-info.txt
 """
 

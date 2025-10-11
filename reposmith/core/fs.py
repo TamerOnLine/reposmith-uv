@@ -1,6 +1,8 @@
 # reposmith/core/fs.py
 from pathlib import Path
-import tempfile, shutil
+import tempfile
+import shutil
+
 
 def ensure_dir(path: Path):
     """Ensure parent directories exist for a target file path."""

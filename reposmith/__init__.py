@@ -1,1 +1,1 @@
-# Auto-created to mark package\n
+# Auto-created to mark package

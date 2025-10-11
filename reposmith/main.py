@@ -154,7 +154,7 @@ def main(argv=None):
 
         # 3) Create the entry file (supports --force with .bak backup)
         entry_state = create_app_file(main_file, force=args.force)
-        print(f"[entry] {entry_state}: {main_file}")       
+        print(f"[entry] {entry_state}: {main_file}")
 
         # 4) Optional extras
         if args.with_vscode:
