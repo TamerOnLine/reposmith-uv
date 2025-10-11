@@ -21,18 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Set up Python for linting tools
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      # Install uv
       - uses: astral-sh/setup-uv@v3
 
-      # Install development dependencies from [tool.uv.dev-dependencies]
       - run: uv sync --dev
-
-      # Run code checks
       - run: uv run ruff check .
 
   test:
@@ -47,25 +42,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Define Python version (needed for matrix builds)
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
 
-      # Enable uv
       - uses: astral-sh/setup-uv@v3
 
-      # Install project + dev dependencies
       - run: uv sync --dev
-
-      # Run tests with coverage (adjust commands for your project)
       - run: uv run -m pytest -q --cov=. --cov-report=term-missing
 
   build:
     name: Build package
     runs-on: ubuntu-latest
     needs: [lint, test]
-
     steps:
       - uses: actions/checkout@v4
 
@@ -75,29 +64,9 @@ jobs:
 
       - uses: astral-sh/setup-uv@v3
 
-      # Build the package (wheel + sdist) into dist/
       - run: uv build
 
-      # Upload build artifacts
       - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/*
-
-  # Optional: publish automatically when a release is created
-  # publish:
-  #   name: Publish to PyPI
-  #   runs-on: ubuntu-latest
-  #   if: github.event_name == 'release' && github.event.action == 'published'
-  #   needs: build
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-python@v5
-  #       with:
-  #         python-version: "3.13"
-  #     - uses: astral-sh/setup-uv@v3
-  #     - run: uv build
-  #     - name: Publish
-  #       env:
-  #         PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-  #       run: uv publish --token "$PYPI_TOKEN"

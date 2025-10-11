@@ -1,7 +1,26 @@
 # 📦 Changelog
 
+---
+
 All notable changes to this project will be documented in this file.  
 This project follows [Semantic Versioning](https://semver.org/).
+
+---
+
+## [0.2.11] - 2025-10-11
+### Added
+- Full integration with the **uv** package manager for faster dependency management and unified environment handling.
+- `[tool.uv]` and `[tool.uv.dev-dependencies]` sections added to `pyproject.toml`.
+- New CI workflow using **astral-sh/setup-uv@v3** for testing, linting, and building across Python 3.12 and 3.13.
+
+### Changed
+- Development workflow now recommends using `uv` instead of manual `venv` and `pip install`.
+- `.github/workflows/ci.yml` completely refactored to use `uv sync --dev` and `uv build`.
+- Documentation updated with a new **“Development with uv (fastest)”** section in `README.md`.
+
+### Fixed
+- Reduced CI setup time by removing redundant pip installations.
+- Improved cross-platform consistency between Linux, Windows, and macOS runners.
 
 ---
 
@@ -132,6 +151,3 @@ This project follows [Semantic Versioning](https://semver.org/).
   - `.vscode/` (settings + launch)
   - `.gitignore`, `LICENSE`
 - Basic GitHub Actions workflow generator.
-
-
-

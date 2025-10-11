@@ -37,34 +37,28 @@ reposmith = "reposmith.main:main"
 where = ["."]
 include = ["reposmith*"]
 
-# =======================================================
-# 🔧 uv Configuration (new)
-# =======================================================
+# ================================
+# uv configuration (correct)
+# ================================
 [tool.uv]
-# Optional custom index (you can leave it commented)
-#index-url = "https://pypi.org/simple"
+# index-url = "https://pypi.org/simple"  # (اختياري)
+dev-dependencies = [
+  "pytest",
+  "pytest-cov",
+  "ruff",
+  "build",
+  "wheel",
+  "twine",
+]
 
-# Development dependencies used in CI or local development
-[tool.uv.dev-dependencies]
-pytest = "*"
-pytest-cov = "*"
-ruff = "*"
-build = "*"
-wheel = "*"
-twine = "*"
-
-# Optional: default environment options for uv
-[tool.uv.environment]
-python = "3.13"
-
-# =======================================================
-# 🧰 Code style / linting tools
-# =======================================================
+# ================================
+# Tooling (optional but useful)
+# ================================
 [tool.ruff]
 line-length = 100
 target-version = "py313"
 select = ["E", "F", "W"]
-ignore = ["E501"]  # Ignore line-length for long strings
+ignore = ["E501"]  # ignore long lines in docstrings/links
 
 [tool.pytest.ini_options]
 addopts = "-q"
