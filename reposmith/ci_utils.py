@@ -36,7 +36,8 @@ def ensure_github_actions_workflow(
 
           - name: Install dependencies (if any)
             run: |
-              if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+              pip install uv || true
+              if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
 
           - name: Run unit tests
             run: |
